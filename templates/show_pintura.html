@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="/inicio_sesion" class="navbar-brand">Bienvenido {{ nombre }} {{ apellido }}</a>
+        <a href="/agregar_pintura" class="navbar-brand">Agregar Pintura</a>
+        <a href="/actualizar_datos_usuario" class="navbar-brand">Actualizar Mis Datos</a>
+        <form class="d-flex" role="search">
+            <a class="btn btn-warning" href="/cerrar_sesion" type="submit">Salir</a>
+        </form>
+    </div>
+</nav>
+<div class="p-1 col-6 mx-auto my-5 bg-dark text-dark float-start">
+    <div class="card">
+        <h5 class="card-header">{{ pintura_info.titulo }}</h5>
+        <div class="card-body">
+            <h5 class="card-title">Autor: {{ autor.nombre }} {{ autor.apellido }}</h5>
+            <p class="card-text">{{ pintura_info.descripcion }}</p>
+            <p>Precio: {{ pintura_info.precio }}</p>
+            {% if pintura_info.autor_id == user_id %}
+                <a class="btn btn-danger" href="/editar/pintura/{{ pintura_info.id }}">Actualizar</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- Opcional: para ver los usuarios a los que les gusta la pintura seleccionada
+<div class="p-1 col-5 mx-auto my-5 bg-dark text-light float-end">
+    <h3>Fans de esta pintura</h3>
+    <table class="table table-dark">
+        <thead>
+            <th>Nombre</th>
+        </thead>
+        <tbody>
+            {% for user in usuarios_suscritos %}
+                <tr class="table-active">
+                    <td>{{ user.nombre }} {{ user.apellido }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+-->
+
+{% endblock %}

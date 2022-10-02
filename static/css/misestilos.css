@@ -1,0 +1,10 @@
+* {
+    border: 0;
+    padding-left: 2em;
+    padding-right: 2em;
+    text-align: center;
+  }
+  a{
+    text-decoration: none;
+    color: bisque;
+  }

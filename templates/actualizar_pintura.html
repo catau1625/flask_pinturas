@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="/inicio_sesion" class="navbar-brand">Bienvenido {{ nombre }} {{ apellido }}</a>
+        <a href="/agregar_pintura" class="navbar-brand">Agregar Pintura</a>
+        <a href="/actualizar_datos_usuario" class="navbar-brand">Actualizar Mis Datos</a>
+        <form class="d-flex" role="search">
+            <a class="btn btn-warning" href="/cerrar_sesion" type="submit">Salir</a>
+        </form>
+    </div>
+  </nav>
+
+<div class="pintura_form">
+    <form action="/actualizar_pintura_process" method="post" class="p-1 col-6 mx-auto my-5 bg-dark text-light">
+        <input type="hidden" name="id" id="" value="{{ pintura_info.id }}">
+        <div class="titulo"><h1>Actualizar Datos Pintura:</h1></div>
+        <div class="row-sm-10 mb-2">
+            <label for="titulo">Titulo:</label>
+            <input name="titulo" type="text" class="form-control" value="{{ pintura_info.titulo }}">
+        </div>
+        <div class="row-sm-10 mb-2">
+            <label for="descripcion">Descripción:</label>
+            <input name="descripcion" type="text" class="form-control" value="{{ pintura_info.descripcion }}">
+        </div>
+        <div class="row-sm-10 mb-2">
+            <label for="precio">Precio:</label>
+            <input name="precio" type="number" class="form-control" value="{{ pintura_info.precio }}">
+        </div>
+        <button id="boton" type="submit" class="btn btn-danger">Actualizar</button>
+    </form>
+</div>
+
+
+{% endblock %}
